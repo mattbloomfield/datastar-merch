@@ -1,9 +1,11 @@
 {% set searchInput = signals.searchInput %}
+{# The above is pulled from the data-bind #}
 {% set items = craft.entries().section('products') %}
 {% if searchInput %}
     {% set items = items.search(searchInput) %}
 {% endif %}
 
+{# go find the product-listing and replace it (note that _components/product-listing.twig has an ID in the wrapper #}
 {% fragment %}
     {% include "_components/product-listing" with {
         items: items.all()

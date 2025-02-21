@@ -1,3 +1,10 @@
+{# this is overly complicated perhaps, (I would do this in PHP) but
+to show you that it is possible I will keep it here.
+
+Essentially we are converting a simple array of entry IDs to a list of elements with an associated count.
+
+We are also handling adding, removing, and deleting of items in the cart here.
+#}
 {% set cartIds = signals.cartIds|default([]) %}
 {% if operation is defined and operation == 'remove' %}
     {% set result = [] %}
@@ -45,12 +52,14 @@
     {% set cartItems = cartItems|merge([{'element': craft.entries().id(uniqueId).one(), 'count': count}]) %}
 {% endfor %}
 
+{# Update the red icon in the navbar if the item count changes #}
 {% fragment %}
     {% include "_components/cart-nav-item" with {
         cartIds: cartIds,
     } only %}
 {% endfragment %}
 
+{# determine whether to show/hide the cart preview, and load it with the items and counts. #}
 {% if signals.cartVisible and operation is not defined %}
     {% do signals.cartVisible(false) %}
 {% else %}

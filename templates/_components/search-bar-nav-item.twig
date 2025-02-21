@@ -6,6 +6,9 @@
             {# DATASTAR ATTRIBUTES TO MAKE SEARCH WORK #}
             data-bind="searchInput" {# data-bind makes whatever value this input has available as a signal in your _datastar templates #}
             data-on-keydown__debounce.200ms="{{ datastar.get('_datastar/product-listing.twig') }}" {# data-on lets you attach a method #}
+            data-on-blur="{{ datastar.get('_datastar/product-listing.twig') }}"
+            {# the above will call the `_datastar/product-listing.twig` whenever a key is pressed or input blurs #}
+            {# the template will know what text has been entered thanks to the `data-bind` which is passed as a `signals.searchInput` in twig #}
             {# END DATASTAR ATTRIBUTES #}
     >
 </div>
