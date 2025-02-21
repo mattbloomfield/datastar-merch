@@ -1,0 +1,12 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="ProductListing">
+    {% for item in items %}
+        {% include '_components/product-card.twig' with {
+            id: item.id,
+            title: item.title,
+            description: item.description,
+            price: item.price|money,
+            image: item.image.one().getUrl(),
+            url: item.url,
+        } %}
+    {% endfor %}
+</div>

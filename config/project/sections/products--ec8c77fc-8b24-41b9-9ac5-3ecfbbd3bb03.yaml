@@ -1,0 +1,28 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: c10c3318-d328-4d46-b052-8f485c053667 # Product
+handle: products
+maxAuthors: 1
+name: Products
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  221628aa-9195-4a80-8314-0a3608505e27: # Datastar Merch
+    enabledByDefault: true
+    hasUrls: true
+    template: _channels/products/product.twig
+    uriFormat: 'products/{slug}'
+type: channel

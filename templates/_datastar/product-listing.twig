@@ -1,0 +1,11 @@
+{% set searchInput = signals.searchInput %}
+{% set items = craft.entries().section('products') %}
+{% if searchInput %}
+    {% set items = items.search(searchInput) %}
+{% endif %}
+
+{% fragment %}
+    {% include "_components/product-listing" with {
+        items: items.all()
+    } %}
+{% endfragment %}

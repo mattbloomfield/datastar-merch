@@ -1,0 +1,49 @@
+dateModified: 1740114692
+email:
+  fromEmail: mbloomfield@uschamber.com
+  fromName: 'Datastar Merch'
+  transportType: craft\mail\transportadapters\Sendmail
+fs:
+  imageTransforms:
+    hasUrls: true
+    name: 'Image Transforms'
+    settings:
+      path: '@webroot/assets/image-transforms'
+    type: craft\fs\Local
+    url: /assets/image-transforms
+  images:
+    hasUrls: true
+    name: Images
+    settings:
+      path: '@webroot/assets/images'
+    type: craft\fs\Local
+    url: /assets/images
+meta:
+  __names__:
+    4e309720-146d-4ef8-8b9f-7a1ca4c6578c: Images # Images
+    69cf82d5-482d-4b1b-8a34-72cb92965bcf: Description # Description
+    221628aa-9195-4a80-8314-0a3608505e27: 'Datastar Merch' # Datastar Merch
+    a3df2783-bb31-4a7e-b363-c571bd9b9e4b: 'Datastar Merch' # Datastar Merch
+    afb8dc04-ca52-442f-ae72-8a8be4daef58: 'Product Highlights' # Product Highlights
+    bcf1c20d-fef6-4456-a477-f4de83877e75: Image # Image
+    c10c3318-d328-4d46-b052-8f485c053667: Product # Product
+    c99ffa0f-b08c-4d6d-8dfe-410aaa5ccd99: Price # Price
+    ec8c77fc-8b24-41b9-9ac5-3ecfbbd3bb03: Products # Products
+plugins:
+  datastar:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: solo
+  live: true
+  name: 'Datastar Merch'
+  schemaVersion: 5.6.0.2
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  require2fa: false
+  requireEmailVerification: true

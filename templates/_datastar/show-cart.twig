@@ -1,0 +1,65 @@
+{% set cartIds = signals.cartIds|default([]) %}
+{% if operation is defined and operation == 'remove' %}
+    {% set result = [] %}
+    {% set found = false %}
+    {% for item in cartIds %}
+        {% if item == id and not found %}
+            {% set found = true %}
+        {% else %}
+            {% set result = result|merge([item]) %}
+        {% endif %}
+    {% endfor %}
+    {% set cartIds = result %}
+{% elseif operation is defined and operation == 'add' %}
+    {% set quantity = signals.quantity ?? 1 %}
+    {% for i in range(1,quantity) %}
+        {% set cartIds = cartIds|merge([id]) %}
+    {% endfor %}
+{% elseif operation is defined and operation == 'delete' %}
+    {% set result = [] %}
+    {% for item in cartIds %}
+        {% if item != id %}
+            {% set result = result|merge([item]) %}
+        {% endif %}
+    {% endfor %}
+    {% set cartIds = result %}
+{% endif %}
+
+{# First pass: Get unique values #}
+{% set uniqueIds = [] %}
+{% for id in cartIds %}
+    {% if id not in uniqueIds %}
+        {% set uniqueIds = uniqueIds|merge([id]) %}
+    {% endif %}
+{% endfor %}
+
+{# Second pass: Count occurrences of each value #}
+{% set cartItems = [] %}
+{% for uniqueId in uniqueIds %}
+    {% set count = 0 %}
+    {% for id in cartIds %}
+        {% if id == uniqueId %}
+            {% set count = count + 1 %}
+        {% endif %}
+    {% endfor %}
+    {% set cartItems = cartItems|merge([{'element': craft.entries().id(uniqueId).one(), 'count': count}]) %}
+{% endfor %}
+
+{% fragment %}
+    {% include "_components/cart-nav-item" with {
+        cartIds: cartIds,
+    } only %}
+{% endfragment %}
+
+{% if signals.cartVisible and operation is not defined %}
+    {% do signals.cartVisible(false) %}
+{% else %}
+    {% fragment %}
+        {% include "_components/cart-contents" with {
+            items: cartItems,
+        } %}
+    {% endfragment %}
+
+    {% do signals.cartIds(cartIds) %}
+    {% do signals.cartVisible(true) %}
+{% endif %}

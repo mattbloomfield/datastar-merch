@@ -1,0 +1,75 @@
+{% set items = items|default([]) %}
+{% set shippingCost = 0 %}
+<div
+    id="CartContents"
+    class=" mx-auto bg-white shadow-lg rounded-lg my-8 absolute right-0 top-0 {{ customClasses is defined ? customClasses : '' }}"
+    data-show="$cartVisible"
+>
+    <div class="py-6 px-4 sm:px-6 min-w-sm max-w-md">
+        <div class="flex items-center justify-between">
+            <h2 class="text-lg font-medium text-gray-900">Shopping Cart</h2>
+            <span class="text-sm text-gray-600">{{ items|length }} Items</span>
+        </div>
+
+        {% set subTotal = 0 %}
+        <div class="mt-8">
+            {% for item in items %}
+                {% set subTotal = subTotal + (item.element.price.amount|float/100 * item.count) %}
+                <div class="flex items-center py-5 border-b border-gray-200" id="CartItem_{{ item.element.id }}">
+                    <img src="{{ item.element.image.one().getUrl() }}" alt="Nike Air Zoom Vapor Pro" class="h-16 w-16 rounded object-cover">
+                    <div class="ml-4 flex-1">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-sm font-medium text-gray-900">{{ item.element.title }}</h3>
+                            <p class="text-sm font-medium text-gray-900">{{ item.element.price|money }}</p>
+                        </div>
+                        <div class="mt-1 flex items-center justify-between">
+                            <div class="flex items-center">
+                                <button class="text-gray-500 hover:text-gray-600 p-1" data-on-click="{{ datastar.get("_datastar/show-cart", { operation: "remove", id: item.element.id }) }}">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
+                                    </svg>
+                                </button>
+                                <span class="mx-2 text-gray-600">{{ item.count }}</span>
+                                <button class="text-gray-500 hover:text-gray-600 p-1" data-on-click="{{ datastar.get("_datastar/show-cart", { operation: "add", id: item.element.id }) }}">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <button class="text-sm text-red-500 hover:text-red-600" data-on-click="{{ datastar.get("_datastar/show-cart", { operation: "delete", id: item.element.id }) }}">Remove</button>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+            <!-- Subtotal -->
+            <div class="mt-6 border-t border-gray-200 pt-4">
+                <div class="flex items-center justify-between text-sm text-gray-600">
+                    <p>Subtotal</p>
+                    <p>${{ subTotal }}</p>
+                </div>
+                {% if items|length > 0 %}
+                <div class="flex items-center justify-between text-sm text-gray-600 mt-2">
+                    {% if subTotal > 100 %}
+                        {% set shippingCost = 0 %}
+                    {% else %}
+                        {% set shippingCost = 9.99 %}
+                    {% endif %}
+                    <p>Shipping</p>
+                    <p>${{ shippingCost }}</p>
+                </div>
+                {% endif %}
+                <div class="flex items-center justify-between text-base font-medium text-gray-900 mt-4">
+                    <p>Total</p>
+                    <p>${{ subTotal + shippingCost }}</p>
+                </div>
+            </div>
+
+            <div class="mt-6">
+                <button class="w-full bg-blue-600 text-white px-4 py-3 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

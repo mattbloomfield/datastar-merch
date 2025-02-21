@@ -1,0 +1,35 @@
+columnSuffix: null
+handle: image
+instructions: null
+name: Image
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowSubfolders: false
+  allowUploads: true
+  allowedKinds: null
+  branchLimit: null
+  defaultUploadLocationSource: 'volume:4e309720-146d-4ef8-8b9f-7a1ca4c6578c' # Images
+  defaultUploadLocationSubpath: null
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: 1
+  previewMode: full
+  restrictFiles: false
+  restrictLocation: false
+  restrictedDefaultUploadSubpath: null
+  restrictedLocationSource: 'volume:4e309720-146d-4ef8-8b9f-7a1ca4c6578c' # Images
+  restrictedLocationSubpath: null
+  selectionLabel: 'Add an Image'
+  showCardsInGrid: true
+  showSiteMenu: false
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  sources:
+    - 'volume:4e309720-146d-4ef8-8b9f-7a1ca4c6578c' # Images
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: large
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Assets

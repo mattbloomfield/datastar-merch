@@ -1,0 +1,25 @@
+{% extends "_layout/base-template" %}
+
+{% block header %}
+    <!-- Logo -->
+    <div class="flex-shrink-0">
+        <a href="/">
+            <h1 class="text-2xl font-bold text-gray-900">{{ currentSite.name }}</h1>
+        </a>
+    </div>
+
+    <!-- Search -->
+    {% include "_components/search-bar-nav-item" %}
+
+    {% include "_components/cart-nav-item" with {
+        count: 0,
+    } only %}
+
+{% endblock %}
+
+{% block content %}
+    {% set items = craft.entries().section('products') %}
+    {% include "_components/product-listing" with {
+        items: items.all()
+    } only %}
+{% endblock %}

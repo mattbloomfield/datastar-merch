@@ -1,0 +1,8 @@
+baseUrl: $PRIMARY_SITE_URL
+handle: default
+hasUrls: true
+language: en-US
+name: 'Datastar Merch'
+primary: true
+siteGroup: a3df2783-bb31-4a7e-b363-c571bd9b9e4b # Datastar Merch
+sortOrder: 1
