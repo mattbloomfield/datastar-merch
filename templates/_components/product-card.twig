@@ -12,10 +12,10 @@
             <button
                     class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
                     {# START DATASTAR ATTRIBUTES #}
-                    {# when this button is clicked, we show the cart. This calls the template in _datastar/show-cart, which in turn includes the _components/cart-contents.twig #}
-                    {# Items whose IDs are contained in the fragments in the _datastar/show-cart twig get replaced  #}
+                    {# when this button is clicked, we show the cart. This calls the template in _datastar/update-cart, which in turn includes the _components/cart-contents.twig #}
+                    {# Items whose IDs are contained in the fragments in the _datastar/update-cart twig get replaced  #}
                     {# Note that we are passing variables directly into the twig component. No need to use signals if we can pass this way #}
-                    data-on-click="{{ datastar.get('_datastar/show-cart', {id: id, operation: 'add'}) }}"
+                    data-on-click="{{ datastar.get('_datastar/update-cart', {id: id, operation: 'add'}) }}"
             >Add to Cart</button>
         </div>
     </div>
