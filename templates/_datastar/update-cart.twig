@@ -1,55 +1,32 @@
-{# this is overly complicated perhaps, (I would do this in PHP) but
-to show you that it is possible I will keep it here.
+{#
+    This template is responsible for updating the cart.
+    It is called from the cart preview, and from the product detail page.
+    It is responsible for updating the cart items and counts, and for updating the cart preview.
 
-Essentially we are converting a simple array of entry IDs to a list of elements with an associated count.
-
-We are also handling adding, removing, and deleting of items in the cart here.
+    It accepts the following parameters:
+    - id: the ID of the product to add or remove from the cart
+    - quantity: the quantity to add or remove from the cart
+    - operation: the operation to perform on the cart (add, remove, removeAll)
+    - action: the action to perform on the cart preview (show, hide)
 #}
-{% set cartIds = signals.cartIds|default([]) %}
-{% if operation is defined and operation == 'remove' %}
-    {% set result = [] %}
-    {% set found = false %}
-    {% for item in cartIds %}
-        {% if item == id and not found %}
-            {% set found = true %}
-        {% else %}
-            {% set result = result|merge([item]) %}
-        {% endif %}
-    {% endfor %}
-    {% set cartIds = result %}
-{% elseif operation is defined and operation == 'add' %}
-    {% set quantity = signals.quantity ?? 1 %}
-    {% for i in range(1,quantity) %}
-        {% set cartIds = cartIds|merge([id]) %}
-    {% endfor %}
-{% elseif operation is defined and operation == 'delete' %}
-    {% set result = [] %}
-    {% for item in cartIds %}
-        {% if item != id %}
-            {% set result = result|merge([item]) %}
-        {% endif %}
-    {% endfor %}
-    {% set cartIds = result %}
+{% set action = action ?? null %}
+
+{% set cartIds = signals.cartIds|default({}) %}
+{% if operation is defined %}
+{% if operation == 'add' %}
+    {% set cartIds[id] = cartIds[id] + quantity|default(1) %}
+{% elseif operation == 'remove' %}
+    {% set cartIds[id] = cartIds[id] - quantity|default(1) %}
+    {% if cartIds[id] < 0 %}
+        {% set cartIds[id] = 0 %}
+    {% endif %}
+{% elseif operation == 'removeAll' %}
+    {% set cartIds[id] = 0 %}
 {% endif %}
 
-{# First pass: Get unique values #}
-{% set uniqueIds = [] %}
-{% for id in cartIds %}
-    {% if id not in uniqueIds %}
-        {% set uniqueIds = uniqueIds|merge([id]) %}
-    {% endif %}
-{% endfor %}
-
-{# Second pass: Count occurrences of each value #}
 {% set cartItems = [] %}
-{% for uniqueId in uniqueIds %}
-    {% set count = 0 %}
-    {% for id in cartIds %}
-        {% if id == uniqueId %}
-            {% set count = count + 1 %}
-        {% endif %}
-    {% endfor %}
-    {% set cartItems = cartItems|merge([{'element': craft.entries().id(uniqueId).one(), 'count': count}]) %}
+{% for id, count in cartIds %}
+    {% set cartItems = cartItems|merge([{'element': craft.entries().id(id).one(), 'count': count}]) %}
 {% endfor %}
 
 {# Update the red icon in the navbar if the item count changes #}
@@ -60,7 +37,7 @@ We are also handling adding, removing, and deleting of items in the cart here.
 {% endfragment %}
 
 {# determine whether to show/hide the cart preview, and load it with the items and counts. #}
-{% if signals.cartVisible and operation is not defined %}
+{% if signals.cartVisible and operation is not defined or action == 'hide' %}
     {% do signals.cartVisible(false) %}
 {% else %}
     {% fragment %}

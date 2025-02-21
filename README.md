@@ -23,11 +23,20 @@ The main Datastar features to look out for here are the search functionality and
 
 Starting in the `index.twig` file you'll see it's a relatively simple site. 
 
+### Search
+
 Look in the `_components/search-bar-nav-item.twig` and `_datastar/product-listing.twig` to get an idea of how the search functionality works.
+
+### Cart
 
 The cart functionality is a bit more complex. Look in the `_components/cart-nav-item.twig` and `_datastar/update-cart.twig` to see how it works. 
 
-The _datastar/update-cart.twig file is where the logic happens and then it loads `_components/cart-contents.twig` to display the cart.
+The _datastar/update-cart.twig file is where the logic happens, and then it loads `_components/cart-contents.twig` to display the cart.
 
 The cart is also used on product pages, found in `_channels/products/product.twig`. 
 
+### Using Local Storage
+
+Datastar makes it easy to persist data between page loads. This site uses local storage to keep track of the cart.
+
+You can find that by searching globally for `data-persist`, which tells datastar which signals to store, as well as `data-on-load` which loads the cart on page load

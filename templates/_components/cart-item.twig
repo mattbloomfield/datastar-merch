@@ -1,0 +1,25 @@
+<div class="flex items-center py-5 border-b border-gray-200" id="CartItem_{{ id }}">
+    <img src="{{ image }}" alt="Nike Air Zoom Vapor Pro" class="h-16 w-16 rounded object-cover">
+    <div class="ml-4 flex-1">
+        <div class="flex items-center justify-between">
+            <h3 class="text-sm font-medium text-gray-900">{{ title }}</h3>
+            <p class="text-sm font-medium text-gray-900">{{ price }}</p>
+        </div>
+        <div class="mt-1 flex items-center justify-between">
+            <div class="flex items-center">
+                <button class="text-gray-500 hover:text-gray-600 p-1" data-on-click="{{ datastar.get("_datastar/update-cart", { operation: "remove", id: id }) }}">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
+                    </svg>
+                </button>
+                <span class="mx-2 text-gray-600">{{ count }}</span>
+                <button class="text-gray-500 hover:text-gray-600 p-1" data-on-click="{{ datastar.get("_datastar/update-cart", { operation: "add", id: id }) }}">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                </button>
+            </div>
+            <button class="text-sm text-red-500 hover:text-red-600" data-on-click="{{ datastar.get("_datastar/update-cart", { operation: "removeAll", id: id }) }}">Remove</button>
+        </div>
+    </div>
+</div>
