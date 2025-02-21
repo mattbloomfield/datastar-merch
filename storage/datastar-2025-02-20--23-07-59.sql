@@ -1302,7 +1302,7 @@ INSERT INTO `projectconfig` (`path`, `value`)
 VALUES
 	('dateModified','1740114692'),
 	('email.fromEmail','\"mbloomfield@uschamber.com\"'),
-	('email.fromName','\"Datastar Merch\"'),
+	('email.fromName','\"Datastar Merch Shop\"'),
 	('email.transportType','\"craft\\\\mail\\\\transportadapters\\\\Sendmail\"'),
 	('entryTypes.c10c3318-d328-4d46-b052-8f485c053667.color','\"cyan\"'),
 	('entryTypes.c10c3318-d328-4d46-b052-8f485c053667.fieldLayouts.238507e3-9c50-419a-905a-2569586aa8b2.tabs.0.elementCondition','null'),
@@ -1504,10 +1504,10 @@ VALUES
 	('fs.imageTransforms.settings.path','\"@webroot/assets/image-transforms\"'),
 	('fs.imageTransforms.type','\"craft\\\\fs\\\\Local\"'),
 	('fs.imageTransforms.url','\"/assets/image-transforms\"'),
-	('meta.__names__.221628aa-9195-4a80-8314-0a3608505e27','\"Datastar Merch\"'),
+	('meta.__names__.221628aa-9195-4a80-8314-0a3608505e27','\"Datastar Merch Shop\"'),
 	('meta.__names__.4e309720-146d-4ef8-8b9f-7a1ca4c6578c','\"Images\"'),
 	('meta.__names__.69cf82d5-482d-4b1b-8a34-72cb92965bcf','\"Description\"'),
-	('meta.__names__.a3df2783-bb31-4a7e-b363-c571bd9b9e4b','\"Datastar Merch\"'),
+	('meta.__names__.a3df2783-bb31-4a7e-b363-c571bd9b9e4b','\"Datastar Merch Shop\"'),
 	('meta.__names__.afb8dc04-ca52-442f-ae72-8a8be4daef58','\"Product Highlights\"'),
 	('meta.__names__.bcf1c20d-fef6-4456-a477-f4de83877e75','\"Image\"'),
 	('meta.__names__.c10c3318-d328-4d46-b052-8f485c053667','\"Product\"'),
@@ -1534,18 +1534,18 @@ VALUES
 	('sections.ec8c77fc-8b24-41b9-9ac5-3ecfbbd3bb03.siteSettings.221628aa-9195-4a80-8314-0a3608505e27.template','\"_channels/products/product.twig\"'),
 	('sections.ec8c77fc-8b24-41b9-9ac5-3ecfbbd3bb03.siteSettings.221628aa-9195-4a80-8314-0a3608505e27.uriFormat','\"products/{slug}\"'),
 	('sections.ec8c77fc-8b24-41b9-9ac5-3ecfbbd3bb03.type','\"channel\"'),
-	('siteGroups.a3df2783-bb31-4a7e-b363-c571bd9b9e4b.name','\"Datastar Merch\"'),
+	('siteGroups.a3df2783-bb31-4a7e-b363-c571bd9b9e4b.name','\"Datastar Merch Shop\"'),
 	('sites.221628aa-9195-4a80-8314-0a3608505e27.baseUrl','\"$PRIMARY_SITE_URL\"'),
 	('sites.221628aa-9195-4a80-8314-0a3608505e27.handle','\"default\"'),
 	('sites.221628aa-9195-4a80-8314-0a3608505e27.hasUrls','true'),
 	('sites.221628aa-9195-4a80-8314-0a3608505e27.language','\"en-US\"'),
-	('sites.221628aa-9195-4a80-8314-0a3608505e27.name','\"Datastar Merch\"'),
+	('sites.221628aa-9195-4a80-8314-0a3608505e27.name','\"Datastar Merch Shop\"'),
 	('sites.221628aa-9195-4a80-8314-0a3608505e27.primary','true'),
 	('sites.221628aa-9195-4a80-8314-0a3608505e27.siteGroup','\"a3df2783-bb31-4a7e-b363-c571bd9b9e4b\"'),
 	('sites.221628aa-9195-4a80-8314-0a3608505e27.sortOrder','1'),
 	('system.edition','\"solo\"'),
 	('system.live','true'),
-	('system.name','\"Datastar Merch\"'),
+	('system.name','\"Datastar Merch Shop\"'),
 	('system.schemaVersion','\"5.6.0.2\"'),
 	('system.timeZone','\"America/Los_Angeles\"'),
 	('users.allowPublicRegistration','false'),
@@ -2117,7 +2117,7 @@ LOCK TABLES `sitegroups` WRITE;
 
 INSERT INTO `sitegroups` (`id`, `name`, `dateCreated`, `dateUpdated`, `dateDeleted`, `uid`)
 VALUES
-	(1,'Datastar Merch','2025-02-20 19:13:49','2025-02-20 19:13:49',NULL,'a3df2783-bb31-4a7e-b363-c571bd9b9e4b');
+	(1,'Datastar Merch Shop','2025-02-20 19:13:49','2025-02-20 19:13:49',NULL,'a3df2783-bb31-4a7e-b363-c571bd9b9e4b');
 
 /*!40000 ALTER TABLE `sitegroups` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -2156,7 +2156,7 @@ LOCK TABLES `sites` WRITE;
 
 INSERT INTO `sites` (`id`, `groupId`, `primary`, `enabled`, `name`, `handle`, `language`, `hasUrls`, `baseUrl`, `sortOrder`, `dateCreated`, `dateUpdated`, `dateDeleted`, `uid`)
 VALUES
-	(1,1,1,'true','Datastar Merch','default','en-US',1,'$PRIMARY_SITE_URL',1,'2025-02-20 19:13:49','2025-02-20 19:13:49',NULL,'221628aa-9195-4a80-8314-0a3608505e27');
+	(1,1,1,'true','Datastar Merch Shop','default','en-US',1,'$PRIMARY_SITE_URL',1,'2025-02-20 19:13:49','2025-02-20 19:13:49',NULL,'221628aa-9195-4a80-8314-0a3608505e27');
 
 /*!40000 ALTER TABLE `sites` ENABLE KEYS */;
 UNLOCK TABLES;
